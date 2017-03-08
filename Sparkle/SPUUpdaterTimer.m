@@ -34,7 +34,9 @@
 
 - (void)startAndFireAfterDelay:(NSTimeInterval)delay
 {
-    assert(self.timer == nil);
+    if (self.timer != nil) {
+        [self invalidate];
+    }
     self.timer = [NSTimer scheduledTimerWithTimeInterval:delay target:self selector:@selector(fire:) userInfo:nil repeats:NO];
 }
 
